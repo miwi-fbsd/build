@@ -16,7 +16,7 @@
 				"os/userland",
 				"os/docs",
 				"os/kernel",
-				"textproc/jq",
+				"textproc/jq"
 			]
 		},
 		"auto-install-script": "",
