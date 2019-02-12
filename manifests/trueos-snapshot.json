@@ -16,14 +16,7 @@
 				"os/userland",
 				"os/docs",
 				"os/kernel",
-				"security/sudo",
-				"sysutils/ipmitool",
-				"sysutils/dmidecode",
-				"sysutils/tmux",
-				"security/ca_root_nss",
-				"sysutils/sysup",
 				"textproc/jq",
-				"www/nginx"
 			]
 		},
 		"auto-install-script": "",
@@ -86,18 +79,6 @@
 		"branch": "trueos-master",
 		"build": {
 			"default": [
-				"archivers/pigz",
-				"devel/gdb",
-				"devel/git",
-				"devel/jenkins",
-				"dns/mDNSResponder_nss",
-				"editors/vim-console",
-				"lang/python",
-				"lang/python2",
-				"lang/python3",
-				"net/rsync",
-				"ports-mgmt/poudriere-trueos",
-				"sysutils/ec2-scripts",
 				"textproc/jq"
 			]
 		},
