@@ -43,6 +43,14 @@ pipeline {
         sh 'make iso'
       }
     }
+     stage('Publish') {
+      steps {
+          sh 'mkdir -p /home/packages/pkg/FreeBSD:13:amd64/latest || true'
+          sh 'cd release/packages && rsync -av --delete-after --delay-updates . /home/packages/pkg/FreeBSD:13:amd64/latest'
+          sh 'mkdir -p /home/packages/iso || true'
+          sh 'rsync -av --delete-after --delay-updates release/iso/ /home/packages/iso'
+        }
+}
   }
   post {
     success {
