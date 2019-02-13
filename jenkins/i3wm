@@ -14,6 +14,7 @@ pipeline {
     POUDRIERE_BASE = 'i3wm-base'
     POUDRIERE_PORTS = 'i3wm-ports'
     TRUEOS_MANIFEST='${WORKSPACE}/i3wm/release/manifests/i3wm.json'
+    sh 'pwd'
     TRUEOS_VERSION = '13.0'
   }
 
