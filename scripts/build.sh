@@ -181,20 +181,40 @@ create_release_links()
 	ln -fs ${POUDRIERE_PKGLOGS} release/port-logs
 }
 
+is_ports_dirty()
+{
+	# Does ports tree already exist?
+	poudriere ports -l | grep -q -w ${POUDRIERE_PORTS}
+	if [ $? -ne 0 ]; then
+		return 1
+	fi
+
+	CURBRANCH=$(cd ${POUDRIERE_PORTDIR} && git branch | awk '{print $2}')
+	if [ -z "$CURBRANCH" ] ; then
+		return 1
+	fi
+
+	# Have we changed branches?
+	if [ "$CURBRANCH" != "${PORTS_BRANCH}" ] ; then
+		return 1
+	fi
+
+	# Looks like we are safe to try an in-place upgrade
+	echo "Updating previous poudriere ports tree"
+	poudriere ports -u -p ${POUDRIERE_PORTS}
+	if [ $? -ne 0 ] ; then
+		echo "Failed updating, checking out ports fresh"
+		echo -e "y\n" | poudriere ports -d -p ${POUDRIERE_PORTS}
+		return 1
+	fi
+	return 0
+}
+
 # Called to import the ports tree into poudriere specified in MANIFEST
 setup_poudriere_ports()
 {
-	# Delete previous ports tree
-	poudriere ports -l | grep -q -w ${POUDRIERE_PORTS}
-	if [ $? -eq 0 ]; then
-		echo "Updating previous poudriere ports tree"
-		poudriere ports -u -p ${POUDRIERE_PORTS}
-		if [ $? -ne 0 ] ; then
-			echo "Failed updating, checking out ports fresh"
-			echo -e "y\n" | poudriere ports -d -p ${POUDRIERE_PORTS}
-			create_poudriere_ports
-		fi
-	else
+	is_ports_dirty
+	if [ $? -ne 0 ] ; then
 		create_poudriere_ports
 	fi
 
@@ -750,8 +770,7 @@ EOF
 		# We have a conditional set of packages to include, lets do it
 		for i in $(jq -r '."iso"."iso-packages"."'$c'" | join(" ")' ${TRUEOS_MANIFEST})
 		do
-			pkg-static -o ABI_FILE=${POUDRIERE_JAILDIR}/bin/sh \
-				-R /etc/pkg \
+			pkg-static -R /etc/pkg \
 				-c ${ISODIR} \
 				install -y $i
 				if [ $? -ne 0 ] ; then
