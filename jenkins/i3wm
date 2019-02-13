@@ -13,8 +13,8 @@ pipeline {
     GH_REPO = 'trueos'
     POUDRIERE_BASE = 'i3wm-base'
     POUDRIERE_PORTS = 'i3wm-ports'
-    TRUEOS_MANIFEST='${WORKSPACE}/i3wm/release/manifests/i3wm.json'
     sh 'pwd'
+    TRUEOS_MANIFEST='${WORKSPACE}/i3wm/release/manifests/i3wm.json'
     TRUEOS_VERSION = '13.0'
   }
 
