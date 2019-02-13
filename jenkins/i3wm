@@ -31,7 +31,7 @@ pipeline {
         }
       }
     environment {
-     TRUEOS_MANIFEST="${env.WORKSPACE}/manifests/i3wm.json'
+     TRUEOS_MANIFEST="${env.WORKSPACE}/manifests/i3wm.json"
   }
       steps {
         sh 'make ports'
@@ -44,7 +44,7 @@ pipeline {
         }
       }
     environment {
-     TRUEOS_MANIFEST="${env.WORKSPACE}/manifests/i3wm.json'
+     TRUEOS_MANIFEST="${env.WORKSPACE}/manifests/i3wm.json"
   }
       steps {
         sh 'make iso'
