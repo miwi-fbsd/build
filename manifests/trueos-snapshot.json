@@ -16,7 +16,8 @@
 				"os/userland",
 				"os/docs",
 				"os/kernel",
-				"textproc/jq"
+				"textproc/jq",
+				"irc/irssi"
 			]
 		},
 		"auto-install-script": "",
@@ -26,7 +27,9 @@
 		"file-name": "TrueOS-Snapshot-x64-%%DATE%%",
 		"install-script": "",
 		"iso-packages": {
-			"default": []
+			"default": [
+				"irc/irssi"
+			]
 		},
 		"overlay": {
 		},
