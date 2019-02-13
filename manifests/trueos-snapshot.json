@@ -28,7 +28,6 @@
 		"install-script": "",
 		"iso-packages": {
 			"default": [
-				"irc/irssi"
 			]
 		},
 		"overlay": {
