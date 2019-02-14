@@ -15,11 +15,24 @@
 	"iso": {
 		"auto-install-packages": {
 			"default": [
+				"devel/git-lite",
+				"devel/jenkins",
+				"editors/vim-console",
+				"net/bsdec2-image-upload",
+				"net/rsync",
 				"os/userland",
 				"os/docs",
 				"os/kernel",
+				"ports-mgmt/poudriere-trueos",
+				"security/sudo",
+				"sysutils/ipmitool",
+				"sysutils/dmidecode",
+				"sysutils/tmux",
+				"security/ca_root_nss",
+				"sysutils/ec2-scripts",
+				"sysutils/sysup",
 				"textproc/jq",
-				"irc/irssi"
+				"www/nginx"
 			]
 		},
 		"auto-install-script": "",
@@ -29,12 +42,56 @@
 		"file-name": "TrueOS-Snapshot-x64-%%DATE%%",
 		"install-script": "",
 		"iso-packages": {
-			"default": [
-				"irc/irssi"
-			]
+			"default": []
 		},
 		"overlay": {
 		},
+		"post-install-commands": [
+			{
+				"chroot":true,
+				"command":"ln -s /usr/local/etc/init.d/ec2_configinit /etc/runlevel/default/ec2_configinit"
+			},
+			{
+				"chroot":true,
+				"command":"ln -s /usr/local/etc/init.d/ec2_fetchkey /etc/runlevel/default/ec2_fetchkey"
+			},
+			{
+				"chroot":true,
+				"command":"ln -s /usr/local/etc/init.d/ec2_loghostkey /etc/runlevel/default/ec2_loghostkey"
+			},
+			{
+				"chroot":true,
+				"command":"sysrc -f /etc/rc.conf ec2_fetchkey_user=root"
+			},
+			{
+				"chroot":true,
+				"command":"sysrc -f /etc/rc.conf ifconfig_ena0=IPV4"
+			},
+			{
+				"chroot":true,
+				"command":"sysrc -f /etc/rc.conf ifconfig_xn0=IPV4"
+			},
+			{
+				"chroot":true,
+				"command":"sysrc -f /etc/rc.conf ifconfig_em0=IPV4"
+			},
+			{
+				"chroot":true,
+				"command":"sysrc -f /etc/rc.conf synchronous_dhclient=YES"
+			},
+			{
+				"chroot":true,
+				"command":"echo \"PasswordAuthentication no\" >>/etc/ssh/sshd_config"
+			},
+			{
+				"chroot":true,
+				"command":"echo \"ChallengeResponseAuthentication no\" >>/etc/ssh/sshd_config"
+			},
+			{
+				"chroot":true,
+				"command":"echo \"PermitRootLogin yes\" >>/etc/ssh/sshd_config"
+			}
+		],
 		"prune": {
 			"default": [
 				"METALOG",
@@ -76,40 +133,18 @@
 			"AxxsOeRYAlBFJ4oo2cFVyqkCAwEAAQ==",
 			"-----END PUBLIC KEY-----"
 		],
-		"url": "https://pkg.trueos.org/pkg/snapshot/${ABI}/latest"
+		"url": "https://pkg.trueos.org/pkg/snapshot-ec2/${ABI}/latest"
 	},
 	"pkg-repo-name": "TrueOS",
 	"pkg-train-name": "snapshot",
 	"ports": {
 		"branch": "trueos-master",
 		"build": {
-			"default": [
-				"archivers/pigz",
-				"devel/gdb",
-				"devel/git",
-				"devel/jenkins",
-				"dns/mDNSResponder_nss",
-				"editors/vim-console",
-				"lang/python",
-				"lang/python2",
-				"lang/python3",
-				"net/bsdec2-image-upload",
-				"net/rsync",
-				"ports-mgmt/poudriere-trueos",
-				"sysutils/ec2-scripts",
-				"textproc/jq"
-			]
+			"default": []
 		},
 		"build-all": false,
 		"make.conf": {
-			"default": [
-				"OPTIONS_UNSET+=DOCS NLS EXAMPLES JAVA CUPS HAL DBUS ALSA PULSEAUDIO GCONF DTRACE PROFILE CONSOLEKIT HELP TCLMAN MANPAGES MAN3 WAYLAND TEST GITWEB IPV6 GTK2 PYTHON2",
-				"OPTIONS_SET+= GTK3 PYTHON3",
-				"security_sudo_SET+=DISABLE_AUTH",
-				"x11-drivers_xorg-drivers_SET+=INTEL LIBINPUT SYNAPTICS VMWARE",
-				"security_pinentry-tty_SET+=LIBSECRET",
-				"os_buildworld_UNSET+=BLUETOOTH EE FINGER FLOPPY FREEBSD_UPDATE HTML IPFILTER IPFW MAIL MAILWRAPPER PORTSNAP PPP QUOTAS RADIUS_SUPPORT SENDMAIL SHAREDOCS SVNLITE TALK TELNET UNBOUND"
-			]
+			"default": []
 		},
 		"type": "git",
 		"url": "https://github.com/trueos/trueos-ports"

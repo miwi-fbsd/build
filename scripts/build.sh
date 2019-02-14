@@ -111,7 +111,14 @@ env_check()
 setup_poudriere_conf()
 {
 	echo "Creating poudriere configuration"
-	ZPOOL=$(mount | grep 'on / ' | cut -d '/' -f 1)
+
+	# Check if a default ZPOOL has been setup in poudriere.conf and use that
+	DEFAULT_ZPOOL=$(grep "^ZPOOL=" /usr/local/etc/poudriere.conf | cut -d '=' -f 2)
+	if [ -n "${DEFAULT_ZPOOL}" ] ; then
+		ZPOOL="${DEFAULT_ZPOOL}"
+	else
+		ZPOOL=$(mount | grep 'on / ' | cut -d '/' -f 1)
+	fi
 	_pdconf="${POUDRIERED_DIR}/${POUDRIERE_PORTS}-poudriere.conf"
 	_pdconf2="${POUDRIERED_DIR}/${POUDRIERE_BASE}-poudriere.conf"
 
@@ -703,10 +710,15 @@ create_offline_update()
 	if [ -z "${TRUEOS_VERSION}" ] ; then
 		TRUEOS_VERSION=$(jq -r '."os_version"' $TRUEOS_MANIFEST)
 	fi
+	if [ -d "${POUDRIERE_PORTDIR}/.git" ] ; then
+		GITHASH=$(git -C ${POUDRIERE_PORTDIR} log -1 --pretty=format:%h)
+	else
+		GITHASH="unknown"
+	fi
 	FILE_RENAME="$(jq -r '."iso"."file-name"' $TRUEOS_MANIFEST)"
 	if [ -n "$FILE_RENAME" -a "$FILE_RENAME" != "null" ] ; then
 		DATE="$(date +%Y%m%d)"
-		FILE_RENAME=$(echo $FILE_RENAME | sed "s|%%DATE%%|$DATE|g" | sed "s|%%TRUEOS_VERSION%%|$TRUEOS_VERSION|g")
+		FILE_RENAME=$(echo $FILE_RENAME | sed "s|%%DATE%%|$DATE|g" | sed "s|%%GITHASH%%|$GITHASH|g" | sed "s|%%TRUEOS_VERSION%%|$TRUEOS_VERSION|g")
 		echo "Renaming ${NAME} -> ${FILE_RENAME}.img"
 		mv release/update/${NAME} release/update/${FILE_RENAME}.img
 		NAME="${FILE_RENAME}.img"
@@ -846,9 +858,14 @@ mk_iso_file()
 
 	TRUEOS_VERSION=$(jq -r '."os_version"' $TRUEOS_MANIFEST)
 	FILE_RENAME="$(jq -r '."iso"."file-name"' $TRUEOS_MANIFEST)"
+	if [ -d "${POUDRIERE_PORTDIR}/.git" ] ; then
+		GITHASH=$(git -C ${POUDRIERE_PORTDIR} log -1 --pretty=format:%h)
+	else
+		GITHASH="unknown"
+	fi
 	if [ -n "$FILE_RENAME" -a "$FILE_RENAME" != "null" ] ; then
 		DATE="$(date +%Y%m%d)"
-		FILE_RENAME=$(echo $FILE_RENAME | sed "s|%%DATE%%|$DATE|g" | sed "s|%%TRUEOS_VERSION%%|$TRUEOS_VERSION|g")
+		FILE_RENAME=$(echo $FILE_RENAME | sed "s|%%DATE%%|$DATE|g" | sed "s|%%GITHASH%%|$GITHASH|g" | sed "s|%%TRUEOS_VERSION%%|$TRUEOS_VERSION|g")
 		echo "Renaming ${NAME} -> release/iso/${FILE_RENAME}.iso"
 		mv ${NAME} release/iso/${FILE_RENAME}.iso
 		NAME="${FILE_RENAME}.iso"
