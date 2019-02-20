@@ -36,7 +36,10 @@
 			]
 		},
 		"kernel-flags": {
-			"default": []
+			"default": [
+				"KERNCONF=GENERIC-NODEBUG"
+				"WITH_META_MODE=YES"
+			]
 		}
 	},
 	"iso": {
