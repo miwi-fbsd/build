@@ -32,12 +32,13 @@
 				"WITHOUT_TELNET=YES",
 				"WITHOUT_TESTS=YES",
 				"WITHOUT_TFTP=YES",
-				"WITHOUT_SENDMAIL=YES"
+				"WITHOUT_SENDMAIL=YES",
+				"WITH_META_MODE=YES"
 			]
 		},
 		"kernel-flags": {
 			"default": [
-				"KERNCONF=GENERIC-NODEBUG"
+				"KERNCONF=GENERIC-NODEBUG",
 				"WITH_META_MODE=YES"
 			]
 		}
