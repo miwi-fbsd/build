@@ -30,7 +30,7 @@ fi
 /bin/mkdir -p /tmp/var
 /bin/mkdir -p /tmp/etc
 /bin/mkdir -p /tmp/localetc
-/bin/mkdir -p /tmp/root
+/bin/mkidr -p /home
 #Copy any existing files to the staging area
 /bin/cp -r /var/* /tmp/var/
 /bin/cp -r /etc/* /tmp/etc/
@@ -39,7 +39,7 @@ fi
 /sbin/mount -t tmpfs tmpfs /var/
 /sbin/mount -t tmpfs tmpfs /etc/
 /sbin/mount -t tmpfs tmpfs /usr/local/etc/
-/sbin/mount -t tmpfs tmpfs /root/
+/sbin/mount -t tmpfs tmpfs /home/
 #Move staged files into read/write mountpoints
 /bin/mv /tmp/var/* /var/
 /bin/mv /tmp/etc/* /etc/
