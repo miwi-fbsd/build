@@ -30,7 +30,7 @@ fi
 /bin/mkdir -p /tmp/var
 /bin/mkdir -p /tmp/etc
 /bin/mkdir -p /tmp/localetc
-/bin/mkidr -p /home
+/bin/mkdir -p /home
 #Copy any existing files to the staging area
 /bin/cp -r /var/* /tmp/var/
 /bin/cp -r /etc/* /tmp/etc/
