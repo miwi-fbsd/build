@@ -46,8 +46,12 @@
 	"iso": {
 		"auto-install-packages": {
 			"default": [
-				"os/userland",
-				"os/kernel",
+				"os/userland@all",
+				"os/userland-base@all",
+				"os/kernel@all",
+				"os/kernel-debug@all",
+				"os/kernel-debug-symbols@all",
+				"os/kernel-symbols@all",
 				"sysutils/tmux",
 				"textproc/jq",
 				"lang/python36",
