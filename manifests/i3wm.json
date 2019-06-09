@@ -141,8 +141,18 @@
 				"x11/i3lock",
 				"x11/i3status",
 				"x11/lxrandr",
+				"sysutils/pc-installdialog",
+				"sysutils/pc-sysinstall",
 				"x11/xorg"
 			]
+		},
+		"os-flavors": {
+			"generic": {
+				"description":"Default TrueOS world / kernel"
+			},
+			"minimal":{
+				"description":"Minimal world with less optional features."
+			}
 		},
 		"overlay": {},
 		"prune": {
@@ -200,18 +210,23 @@
 		"build-all": false,
 		"make.conf": {
 			"default": [
-				"OPTIONS_UNSET+=DOCS NLS EXAMPLES JAVA CUPS HAL DBUS ALSA PULSEAUDIO GCONF DTRACE PROFILE CONSOLEKIT HELP TCLMAN MANPAGES MAN3 WAYLAND TEST GITWEB IPV6 GTK2 PYTHON2",
+				"OPTIONS_UNSET+=DOCS ZOL NLS EXAMPLES JAVA CUPS HAL DBUS ALSA PULSEAUDIO GCONF DTRACE PROFILE CONSOLEKIT HELP TCLMAN MANPAGES MAN3 WAYLAND TEST GITWEB IPV6 GTK2 PYTHON2 TESTS",
 				"OPTIONS_SET+= GTK3 PYTHON3",
 				"security_sudo_SET+=DISABLE_AUTH",
 				"x11-drivers_xorg-drivers_SET+=INTEL LIBINPUT SYNAPTICS VMWARE SCFB",
 				"security_pinentry-tty_SET+=LIBSECRET",
-				"os_buildworld_UNSET+=BLUETOOTH EE FINGER FLOPPY FREEBSD_UPDATE HTML IPFILTER IPFW MAIL MAILWRAPPER PORTSNAP PPP QUOTAS RADIUS_SUPPORT SENDMAIL SHAREDOCS SVNLITE TALK TELNET UNBOUND",
+				"os_buildworld_UNSET+=BLUETOOTH ZOL EE FINGER FLOPPY FREEBSD_UPDATE HTML IPFILTER IPFW MAIL MAILWRAPPER PORTSNAP PPP QUOTAS RADIUS_SUPPORT SENDMAIL SHAREDOCS SVNLITE TALK TELNET UNBOUND",
 				"os_buildworld_SET+=META_MODE",
-				"os_buildkernel_SET+=META_MODE"
+				"os_buildkernel_SET+=META_MODE",
+				"os_userland_UNSET+="TEST ZOL"
 			]
 		},
 		"type": "git",
 		"url": "https://github.com/trueos-i3wm/trueos-ports"
 	},
+		"poudriere-conf": [
+		"ALLOW_MAKE_JOBS_PACKAGES=\"openjdk8* llvm* mpfr*\"",
+		"FLAVOR_DEFAULT_ALL=yes"
+	],
 	"version": "1.1"
 }
