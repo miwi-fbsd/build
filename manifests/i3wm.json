@@ -46,12 +46,9 @@
 	"iso": {
 		"auto-install-packages": {
 			"default": [
-				"os/userland@all",
-				"os/userland-base@all",
-				"os/kernel@all",
-				"os/kernel-debug@all",
-				"os/kernel-debug-symbols@all",
-				"os/kernel-symbols@all",
+				"os/userland@generic",
+				"os/userland-base@generic",
+				"os/kernel@generic",
 				"sysutils/tmux",
 				"textproc/jq",
 				"lang/python36",
@@ -94,6 +91,8 @@
 				"x11/i3lock",
 				"x11/i3status",
 				"x11/lxrandr",
+				"sysutils/pc-installdialog",
+				"sysutils/pc-sysinstall",
 				"x11/xorg",
 				"base/devtools"
 			]
