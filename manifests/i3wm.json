@@ -47,7 +47,7 @@
 		"auto-install-packages": {
 			"default": [
 				"os/userland@noflavor",
-				"os/userland-basen@noflavor",
+				"os/userland-base@noflavor",
 				"os/kernel@noflavor",
 				"sysutils/tmux",
 				"textproc/jq",
