@@ -32,7 +32,7 @@
 				"WITHOUT_TELNET=YES",
 				"WITHOUT_TESTS=YES",
 				"WITHOUT_TFTP=YES",
-				"WITHOUT_SENDMAIL=YES",
+				"WITHOUT_SENDMAIL=YES"
 			]
 		},
 		"kernel-flags": {
