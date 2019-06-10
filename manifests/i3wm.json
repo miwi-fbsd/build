@@ -21,7 +21,6 @@
 				"WITHOUT_IPFW=YES",
 				"WITHOUT_MAIL=YES",
 				"WITHOUT_NIS=YES",
-				"WITHOUT_NLS=YES",
 				"WITHOUT_NS_CACHING=YES",
 				"WITHOUT_PF=YES",
 				"WITHOUT_PORTSNAP=YES",
@@ -39,7 +38,10 @@
 			"default": [
 				"KERNCONF=GENERIC-NODEBUG"
 			]
-		}
+		},
+	"branch":"trueos/master",
+	"repo":"https://github.com/trueos/trueos"
+		
 	},
 	"iso": {
 		"auto-install-packages": {
