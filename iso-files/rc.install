@@ -11,11 +11,18 @@
 MACHINE=`uname -m`
 BRAND="TrueOS"
 if [ -e "/var/db/trueos-manifest.json" ] ; then
-  _tmp=`jq -r '."os_name"' "/var/db/trueos-manifest.json"`
+  _tmp=`jq -r '."os_name"' "/var/db/trueos-manifest.json" 2>/dev/null`
   if [ -n "${_tmp}" -a "${_tmp}" != "null" ] ; then
     BRAND="${_tmp}"
   fi
 fi
+
+if [ -e "/usr/local/sbin/pc-installdialog" ] ; then
+	PCINSTALL="/usr/local/sbin/pc-installdialog"
+else
+	PCINSTALL="/usr/sbin/pc-installdialog"
+fi
+
 # resolv.conf from DHCP ends up in here, so make sure the directory exists
 mkdir /tmp/install_etc
 
@@ -39,7 +46,7 @@ if [ $? -eq 0 ]; then
 else
 	# Serial or other console
 	echo
-	echo "Welcome to ${BRAND}!"
+	echo "Preparing to start installation!"
 	echo
 	echo "Please choose the appropriate terminal type for your system."
 	echo "Common console types are:"
@@ -63,6 +70,11 @@ clear
 if [ -f /etc/trueos-custom-install ]; then
 	# A custom install script exists, lets run that instead of the default
 	$(cat /etc/trueos-custom-install)
+	if [ $? -eq 0 ]; then
+		dialog --backtitle "Installation Media" --title "Complete" --yes-label "Reboot" --no-label "Live CD" --yesno "Installation complete! Would you like to reboot into the installed system now?" 0 0 && reboot
+	else
+		. /etc/rc.local
+	fi
 	exit $?
 fi
 
@@ -101,7 +113,7 @@ $DIALOG_OK)	# Install
 	fi
 
 	trap true SIGINT	# Ignore cntrl-C here
-	pc-installdialog
+	${PCINSTALL}
 	if [ $? -eq 0 ]; then
 		dialog --backtitle "${BRAND} Installer" --title "Complete" --yes-label "Reboot" --no-label "Live CD" --yesno "Installation of ${BRAND} complete! Would you like to reboot into the installed system now?" 0 0 && reboot
 	else
