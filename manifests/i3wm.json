@@ -21,7 +21,6 @@
 				"sysutils/tmux",
 				"textproc/jq",
 				"lang/python36",
-				"x11/miwidesktop",
 				"editors/vim-console",
 				"security/openssh-askpass",
 				"ports-mgmt/porttools",
@@ -75,7 +74,6 @@
 		"iso-packages": {
 			"default": [
 				"lang/python36",
-				"x11/miwidesktop",
 				"editors/vim-console",
 				"ports-mgmt/porttools",
 				"devel/git",
