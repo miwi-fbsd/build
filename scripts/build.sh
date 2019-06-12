@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 #
 # Copyright (c) 2019 Kris Moore
 # All rights reserved.
