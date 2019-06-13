@@ -3,7 +3,7 @@
 		"world-flags": {
 			"default": [
 				"MALLOC_PRODUCTION=YES",
-				"WITHOUT_ASSERT_DEBUG=ON",
+				"WITHOUT_ASSERT_DEBUG=ON"
 			]
 		},
 		"kernel-flags": {
