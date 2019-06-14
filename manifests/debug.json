@@ -1,131 +1,119 @@
-{
-	"base-packages": {
-		"world-flags": {
-			"default": [
-				"MALLOC_PRODUCTION=YES",
-				"WITHOUT_ASSERT_DEBUG=ON"
-			]
-		},
-		"kernel-flags": {
-			"default": [
-				"KERNCONF=GENERIC-NODEBUG"
-			]
-		},
-	"branch":"trueos/master",
-	"repo":"https://github.com/trueos/trueos"
-		
-	},
-	"iso": {
-		"auto-install-packages": {
-			"default": [
-				"os/userland",
-				"os/userland-base",
-				"os/kernel",
-				"sysutils/pc-installdialog",
-				"editors/vim-console",
-				"security/openssh-askpass",
-				"ports-mgmt/porttools",
-				"ports-mgmt/psearch",
-				"shells/zsh",
-				"devel/git",
-				"sysutils/pc-sysinstall"
-			]
-		},
-		"auto-install-script": "",
-		"dist-packages": {
-			"default": []
-		},
-		"file-name": "i3wm-%%DATE%%-%%GITHASH%%",
-		"install-script": "",
-		"iso-packages": {
-			"default": [
-				"sysutils/pc-installdialog",
-				"sysutils/pc-sysinstall",
-				"editors/vim-console",
-				"security/openssh-askpass",
-				"ports-mgmt/porttools",
-				"ports-mgmt/psearch",
-				"shells/zsh",
-				"devel/git"
-			]
-		},
-		"os-flavors": {
-			"generic": {
-				"description":"Default TrueOS world / kernel"
-			},
-			"minimal":{
-				"description":"Minimal world with less optional features."
-			}
-		},
-		"overlay": {},
-		"prune": {
-			"default": [
-				"METALOG",
-				"/usr/local/share/examples",
-				"/usr/local/include",
-				"/usr/bin/cc*",
-				"/usr/bin/clang*",
-				"/usr/bin/cpp",
-				"/usr/bin/cpp",
-				"/usr/bin/c++",
-				"/usr/bin/lldb",
-				"/usr/bin/ld.lld",
-				"/usr/bin/llvm*",
-				"/usr/bin/objdump*",
-				"/usr/bin/svn*",
-				"/usr/lib/clang",
-				"/usr/share/man",
-				"/usr/share/i18n",
-				"/usr/share/openssl/man",
-				"/usr/include",
-				"/usr/lib32"
-			]
-		}
-	},
-	"pkg-repo": {
-		"pubKey": [
-			"-----BEGIN PUBLIC KEY-----",
-			"MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAx4YxSavJkE7HjopkMtgK",
-			"tk/plcnImzfx0MmdK3ijv2724+v810kbAmRI01aiooQvusfcQ5OOyNpAzxwKMTTB",
-			"6bo46YtrnYBTP5G1mNqTRxL5Sg03Kpwcb6fCZ4gYOqTNPmhV6BskhRrfGOzNazcd",
-			"cb8CeqTeL7A44vwkyufQrSNgT9+ByCGuxaEp2os+GEbELyWZMmpQD6s2gAgpXuB6",
-			"K/f7pm9ZsULjJ+ZKc31TjgMTyVA07niocjDxiD2KVEbiagirnxA7BLa66u58B1ol",
-			"tnvOD8JNkGONT2LJhWOMXowZ8fCQ6Ec6ws2SY0UJ14d4w7xnz7U9+STHRYlJnNyl",
-			"ZYNLZ7UK7zyILWhAjkmq3TUaw7o456+QIyf4hA/he9UZhwhgRGNjJCUATbEUT+PF",
-			"65ox6+rT5g/jjDlY6kxfvLCTYJG/Arlj9FCAV/vBa/0lUu1OjivxPNK694G4tVHl",
-			"/z1yApzgzbOgkOY1caPCkGgniD2N4rySm744RxVXonrKmso9nsG0tGrDTC72M39Y",
-			"xgzt2x+NCDhBxZ6EWkqXH6Xk5yOPUV8XDTjqwOnm4XvyD9jzxAiK9Bex6CxKNfph",
-			"9p42Kr3QZPVXjZofqcfhJxZ4Nv0s09K1R1yqNzMmO7Aa2uF2F6ChQ/m6Z41hdaeO",
-			"AxxsOeRYAlBFJ4oo2cFVyqkCAwEAAQ==",
-			"-----END PUBLIC KEY-----"
-		],
-		"url": "http://pkg.fbsd.io/i3wm/pkg/${ABI}/latest"
-	},
-	"pkg-repo-name": "TrueOS",
-	"pkg-train-name": "debug",
-	"ports": {
-		"branch": "trueos-master",
-		"build": {
-			"default": [
-				"textproc/jq"
-			]
-		},
-		"build-all": false,
-		"make.conf": {
-			"default": [
-				"OPTIONS_UNSET+=DOCS DEBUG ZOL NLS EXAMPLES JAVA CUPS HAL DBUS ALSA PULSEAUDIO GCONF DTRACE PROFILE CONSOLEKIT HELP TCLMAN MANPAGES MAN3 WAYLAND TEST GITWEB IPV6 GTK2 PYTHON2 TESTS",
-				"OPTIONS_SET+= GTK3 PYTHON3",
-				"security_sudo_SET+=DISABLE_AUTH",
-				"x11-drivers_xorg-drivers_SET+=INTEL LIBINPUT SYNAPTICS VMWARE SCFB",
-				"security_pinentry-tty_SET+=LIBSECRET",
-				"os_buildworld_UNSET+=BLUETOOTH ZOL EE FINGER FLOPPY FREEBSD_UPDATE HTML IPFILTER IPFW MAIL MAILWRAPPER PORTSNAP PPP QUOTAS RADIUS_SUPPORT SENDMAIL SHAREDOCS SVNLITE TALK TELNET UNBOUND",
-				"os_buildworld_UNSET+=META_MODE",
-				"os_buildkernel_UNSET+=META_MODE",
-				"os_userland_UNSET+=DEBUG TEST ZOL"
-			]
-		},
-		"type": "git",
-		"url": "https://github.com/trueos-i3wm/trueos-ports"
-	},
-	"version": "1.1"
+{  
+   "base-packages":{  
+      "world-flags":{  
+         "default":[  
+            "MALLOC_PRODUCTION=YES",
+            "WITHOUT_ASSERT_DEBUG=ON"
+         ]
+      },
+      "kernel-flags":{  
+         "default":[  
+            "KERNCONF=GENERIC-NODEBUG"
+         ]
+      },
+      "branch":"trueos/master",
+      "repo":"https://github.com/trueos/trueos"
+   },
+   "iso":{  
+      "auto-install-packages":{  
+         "default":[  
+            "os/userland@generic",
+            "os/userland-base@generic",
+            "os/kernel@generic",
+            "sysutils/pc-installdialog",
+            "sysutils/pc-sysinstall"
+         ]
+      },
+      "auto-install-script":"",
+      "dist-packages":{  
+         "default":[  
+
+         ]
+      },
+      "file-name":"i3wm-%%DATE%%-%%GITHASH%%",
+      "install-script":"",
+      "iso-packages":{  
+         "default":[  
+            "sysutils/pc-installdialog",
+            "sysutils/pc-sysinstall"
+         ]
+      },
+      "os-flavors":{  
+         "generic":{  
+            "description":"Default TrueOS world / kernel"
+         }
+      },
+      "overlay":{  
+
+      },
+      "prune":{  
+         "default":[  
+            "METALOG",
+            "/usr/local/share/examples",
+            "/usr/local/include",
+            "/usr/bin/cc*",
+            "/usr/bin/clang*",
+            "/usr/bin/cpp",
+            "/usr/bin/cpp",
+            "/usr/bin/c++",
+            "/usr/bin/lldb",
+            "/usr/bin/ld.lld",
+            "/usr/bin/llvm*",
+            "/usr/bin/objdump*",
+            "/usr/bin/svn*",
+            "/usr/lib/clang",
+            "/usr/share/man",
+            "/usr/share/i18n",
+            "/usr/share/openssl/man",
+            "/usr/include",
+            "/usr/lib32"
+         ]
+      }
+   },
+   "pkg-repo":{  
+      "pubKey":[  
+         "-----BEGIN PUBLIC KEY-----",
+         "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAx4YxSavJkE7HjopkMtgK",
+         "tk/plcnImzfx0MmdK3ijv2724+v810kbAmRI01aiooQvusfcQ5OOyNpAzxwKMTTB",
+         "6bo46YtrnYBTP5G1mNqTRxL5Sg03Kpwcb6fCZ4gYOqTNPmhV6BskhRrfGOzNazcd",
+         "cb8CeqTeL7A44vwkyufQrSNgT9+ByCGuxaEp2os+GEbELyWZMmpQD6s2gAgpXuB6",
+         "K/f7pm9ZsULjJ+ZKc31TjgMTyVA07niocjDxiD2KVEbiagirnxA7BLa66u58B1ol",
+         "tnvOD8JNkGONT2LJhWOMXowZ8fCQ6Ec6ws2SY0UJ14d4w7xnz7U9+STHRYlJnNyl",
+         "ZYNLZ7UK7zyILWhAjkmq3TUaw7o456+QIyf4hA/he9UZhwhgRGNjJCUATbEUT+PF",
+         "65ox6+rT5g/jjDlY6kxfvLCTYJG/Arlj9FCAV/vBa/0lUu1OjivxPNK694G4tVHl",
+         "/z1yApzgzbOgkOY1caPCkGgniD2N4rySm744RxVXonrKmso9nsG0tGrDTC72M39Y",
+         "xgzt2x+NCDhBxZ6EWkqXH6Xk5yOPUV8XDTjqwOnm4XvyD9jzxAiK9Bex6CxKNfph",
+         "9p42Kr3QZPVXjZofqcfhJxZ4Nv0s09K1R1yqNzMmO7Aa2uF2F6ChQ/m6Z41hdaeO",
+         "AxxsOeRYAlBFJ4oo2cFVyqkCAwEAAQ==",
+         "-----END PUBLIC KEY-----"
+      ],
+      "url":"http://pkg.fbsd.io/i3wm/pkg/${ABI}/latest"
+   },
+   "pkg-repo-name":"TrueOS",
+   "pkg-train-name":"debug",
+   "ports":{  
+      "branch":"trueos-master",
+      "build":{  
+         "default":[  
+            "textproc/jq"
+         ]
+      },
+      "build-all":false,
+      "make.conf":{  
+         "default":[  
+            "OPTIONS_UNSET+=DOCS DEBUG ZOL NLS EXAMPLES JAVA CUPS HAL DBUS ALSA PULSEAUDIO GCONF DTRACE PROFILE CONSOLEKIT HELP TCLMAN MANPAGES MAN3 WAYLAND TEST GITWEB IPV6 GTK2 PYTHON2 TESTS",
+            "OPTIONS_SET+= GTK3 PYTHON3",
+            "security_sudo_SET+=DISABLE_AUTH",
+            "x11-drivers_xorg-drivers_SET+=INTEL LIBINPUT SYNAPTICS VMWARE SCFB",
+            "security_pinentry-tty_SET+=LIBSECRET",
+            "os_buildworld_UNSET+=BLUETOOTH ZOL EE FINGER FLOPPY FREEBSD_UPDATE HTML IPFILTER IPFW MAIL MAILWRAPPER PORTSNAP PPP QUOTAS RADIUS_SUPPORT SENDMAIL SHAREDOCS SVNLITE TALK TELNET UNBOUND",
+            "os_buildworld_UNSET+=META_MODE",
+            "os_buildkernel_UNSET+=META_MODE",
+            "os_userland_UNSET+=DEBUG TEST ZOL"
+         ]
+      },
+      "type":"git",
+      "url":"https://github.com/trueos-i3wm/trueos-ports"
+   },
+   "version":"1.1"
 }
