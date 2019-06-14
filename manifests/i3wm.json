@@ -48,6 +48,7 @@
 				"deskutils/py-py3status",
 				"net-mgmt/networkmgr",
 				"sysutils/sysup",
+				"x11/miwidesktop",
 				"deskutils/gcalcli",
 				"sysutils/neofetch",
 				"graphics/scrot",
@@ -84,6 +85,7 @@
 				"devel/subversion",
 				"net/rsync",
 				"lang/python",
+				"x11/miwidesktop",
 				"security/openvpn",
 				"graphics/drm-current-kmod",
 				"sysutils/htop",
@@ -115,9 +117,6 @@
 		"os-flavors": {
 			"generic": {
 				"description":"Default TrueOS world / kernel"
-			},
-			"minimal":{
-				"description":"Minimal world with less optional features."
 			}
 		},
 		"overlay": {},
@@ -171,9 +170,9 @@
 		"build": {
 			"default": [
 				"textproc/jq",
-				"os/userland",
-				"os/userland-base",
-				"os/kernel"
+            			"os/userland@generic",
+          			"os/userland-base@generic",
+            			"os/kernel@generic"
 			]
 		},
 		"build-all": false,
