@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 #
 # Copyright (c) 2019 Kris Moore
 # All rights reserved.
@@ -308,7 +308,7 @@ assemble_file_manifest(){
 		# Also inject the date/time of the current build here
 		local _date=`date -ju "+%Y_%m_%d %H:%M %Z"`
 		local _date_secs=`date -j +%s`
-		manifest="${manifest}, \"build_date\" : \"${_date}\", \"build_date_time_t\" : \"${_date_secs}\""
+		manifest="${manifest}, \"build_date\" : \"${_date}\", \"build_date_time_t\" : \"${_date_secs}\", \"version\" : \"${TRUEOS_VERSION}\""
 		echo "{ ${manifest} }" > "${mfile}"
 		return 0
 	else
@@ -681,11 +681,6 @@ get_pkg_build_list()
 		done
 	done
 
-	# Get the explicit packages
-	echo 'os/userland' >> ${1}
-	echo 'os/kernel' >> ${1}
-	echo 'textproc/jq' >> ${1}
-
 	# Sort and remove dups
 	cat ${1} | sort -r | uniq > ${1}.new
 	mv ${1}.new ${1}
@@ -944,7 +939,26 @@ create_iso_dir()
 
 	export PKG_DBDIR="tmp/pkgdb"
 
-	BASE_PACKAGES="os/userland os/kernel ports-mgmt/pkg textproc/jq"
+	# Check for conditionals packages to install
+	for c in $(jq -r '."iso"."iso-base-packages" | keys[]' ${TRUEOS_MANIFEST} 2>/dev/null | tr -s '\n' ' ')
+	do
+		eval "CHECK=\$$c"
+		if [ -z "$CHECK" -a "$c" != "default" ] ; then continue; fi
+
+		# We have a conditional set of packages to include, lets do it
+		for i in $(jq -r '."iso"."iso-base-packages"."'$c'" | join(" ")' ${TRUEOS_MANIFEST})
+		do
+			BASE_PACKAGES="${BASE_PACKAGES} ${i}"
+		done
+	done
+
+	if [ -z "$BASE_PACKAGES" ] ; then
+		# No custom base packages specified, lets roll with the defaults
+		BASE_PACKAGES="os/userland os/kernel ports-mgmt/pkg"
+	else
+		# We always need pkg itself
+		BASE_PACKAGES="${BASE_PACKAGES} ports-mgmt/pkg"
+	fi
 
 	# Install the base packages into iso dir
 	for pkg in ${BASE_PACKAGES}
@@ -1088,10 +1102,7 @@ EOF
 	if [ $? -ne 0 ] ; then
 		exit_err "Failed mounting nullfs to ${ISODIR}/install-pkg"
 	fi
-	
 	mount -t devfs devfs ${ISODIR}/dev
-	$PWD
-	ls -la 
 	if [ $? -ne 0 ] ; then
 		exit_err "Failed mounting devfs to ${ISODIR}/dev"
 	fi
@@ -1421,7 +1432,26 @@ create_vm_dir()
 
 	mk_repo_config
 
-	BASE_PACKAGES="os/userland os/kernel ports-mgmt/pkg textproc/jq"
+	# Check for conditionals packages to install
+	for c in $(jq -r '."vm"."vm-base-packages" | keys[]' ${TRUEOS_MANIFEST} 2>/dev/null | tr -s '\n' ' ')
+	do
+		eval "CHECK=\$$c"
+		if [ -z "$CHECK" -a "$c" != "default" ] ; then continue; fi
+
+		# We have a conditional set of packages to include, lets do it
+		for i in $(jq -r '."iso"."vm-base-packages"."'$c'" | join(" ")' ${TRUEOS_MANIFEST})
+		do
+			BASE_PACKAGES="${BASE_PACKAGES} ${i}"
+		done
+	done
+
+	if [ -z "$BASE_PACKAGES" ] ; then
+		# No custom base packages specified, lets roll with the defaults
+		BASE_PACKAGES="os/userland os/kernel ports-mgmt/pkg"
+	else
+		# We always need pkg itself
+		BASE_PACKAGES="${BASE_PACKAGES} ports-mgmt/pkg"
+	fi
 
 	mkdir -p ${VMDIR}/tmp
 	mkdir -p ${VMDIR}/var/db/pkg
@@ -1485,6 +1515,12 @@ run_vm_post_install() {
 			echo "Stamping ZFS boot-loader"
 			echo "gpart bootcode -b ${VMDIR}/boot/pmbr -p ${VMDIR}/boot/gptzfsboot -i 1 ${MDDEV}"
 			gpart bootcode -b ${VMDIR}/boot/pmbr -p ${VMDIR}/boot/gptzfsboot -i 1 ${MDDEV} || exit_err "failed stamping boot!"
+			touch ${VMDIR}/boot/loader.conf
+			if [ -e "${VMDIR}/boot/modules/openzfs.ko" ] ; then
+				sysrc -f ${VMDIR}/boot/loader.conf openzfs_load=YES
+			else
+				sysrc -f ${VMDIR}/boot/loader.conf zfs_load=YES
+			fi
 			;;
 	esac
 
