@@ -38,6 +38,12 @@
             "sysutils/pc-sysinstall"
          ]
       },
+      "iso-base-packages":{  
+         "default":[  
+            "os-generic-userland",
+            "os-generic-kernel"
+         ]
+      },
       "os-flavors":{  
          "generic":{  
             "description":"Default TrueOS world / kernel"
