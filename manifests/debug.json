@@ -22,6 +22,12 @@
 				"os/userland-base",
 				"os/kernel",
 				"sysutils/pc-installdialog",
+				"editors/vim-console",
+				"security/openssh-askpass",
+				"ports-mgmt/porttools",
+				"ports-mgmt/psearch",
+				"shells/zsh",
+				"devel/git",
 				"sysutils/pc-sysinstall"
 			]
 		},
@@ -34,7 +40,13 @@
 		"iso-packages": {
 			"default": [
 				"sysutils/pc-installdialog",
-				"sysutils/pc-sysinstall"
+				"sysutils/pc-sysinstall",
+				"editors/vim-console",
+				"security/openssh-askpass",
+				"ports-mgmt/porttools",
+				"ports-mgmt/psearch",
+				"shells/zsh",
+				"devel/git"
 			]
 		},
 		"os-flavors": {
