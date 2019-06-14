@@ -16,10 +16,7 @@
    },
    "iso":{  
       "auto-install-packages":{  
-         "default":[  
-            "os/userland@generic",
-            "os/userland-base@generic",
-            "os/kernel@generic",
+         "default":[
             "sysutils/pc-installdialog",
             "sysutils/pc-sysinstall"
          ]
@@ -36,6 +33,12 @@
          "default":[  
             "sysutils/pc-installdialog",
             "sysutils/pc-sysinstall"
+         ]
+      },
+      "iso-base-packages":{  
+         "default":[  
+            "os-generic-userland",
+            "os-generic-kernel"
          ]
       },
       "os-flavors":{  
