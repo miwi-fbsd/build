@@ -30,7 +30,7 @@
 local drawer = require("drawer")
 
 local i3wn_brand = {
-" _ _____                  		", 
+" _ _____			",
 "(_)___ /_      ___ __ ___  	",
 "| | |_ \ \ /\ / / '_ ` _ \ 	",
 "| |___) \ V  V /| | | | | |	",
@@ -39,7 +39,7 @@ local i3wn_brand = {
 
 drawer.addBrand("i3wm", {
 requires_color = false,
-    graphic = trueos_brand,
+    graphic = i3wm_brand,
 })
 
  return true
