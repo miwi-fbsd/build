@@ -29,17 +29,18 @@
 
 local drawer = require("drawer")
 
-local i3wn_brand = {
-" _ _____			",
-"(_)___ /_      ___ __ ___  	",
-"| | |_ \ \ /\ / / '_ ` _ \ 	",
-"| |___) \ V  V /| | | | | |	",
-"|_|____/ \_/\_/ |_| |_| |_|	"
+local trueos_brand = {
+
+"	 _ _____	",
+"	(_)___ /_      ___ __ ___	",
+"	| | |_ \ \ /\ / / '_ ` _ \	",
+"	| |___) \ V  V /| | | | | |	",
+"	|_|____/ \_/\_/ |_| |_| |_|	"
 }
 
-drawer.addBrand("i3wm", {
-requires_color = false,
-    graphic = i3wm_brand,
+drawer.addBrand("trueos", {
+	requires_color = false,
+	graphic = trueos_brand,
 })
 
- return true
+return true
