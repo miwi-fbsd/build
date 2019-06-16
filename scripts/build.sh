@@ -1172,9 +1172,10 @@ install-repo: {
 }
 EOF
 	#execute i3wm 
+	echo "Execute i3wm env"
 	. "$(dirname $0)/i3wm.sh"
-		$PWD
-		ls -la
+	
+
 	# Prune specified files
 	prune_iso
 
