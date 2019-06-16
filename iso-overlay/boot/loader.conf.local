@@ -1,7 +1,3 @@
-loader_brand="i3wm"
-loader_logo="none"
-loader_menu_title="Welcome to i3wm"
-loader_color="YES"
 kern.vt.color.0.rgb="#151515"
 kern.vt.color.1.rgb="#bc5653"
 kern.vt.color.2.rgb="#909d63"
