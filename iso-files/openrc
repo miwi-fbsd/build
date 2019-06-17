@@ -29,25 +29,24 @@ fi
 #Make temporary staging areas in /tmp
 /bin/mkdir -p /tmp/var
 /bin/mkdir -p /tmp/etc
-/bin/mkdir -p /tmp/localetc
+/bin/mkdir -p /tmp/local
 #Copy any existing files to the staging area
 /bin/cp -r /var/* /tmp/var/
 /bin/cp -r /etc/* /tmp/etc/
-/bin/cp -r /usr/local/etc/* /tmp/localetc/
+/bin/cp -r /usr/local/* /tmp/local/
 #Create the read-write tmpfs mountpoints
 /sbin/mount -t tmpfs tmpfs /var/
 /sbin/mount -t tmpfs tmpfs /etc/
-/sbin/mount -t tmpfs tmpfs /usr/local
-/sbin/mount -t tmpfs tmpfs /usr/local/etc/
+/sbin/mount -t tmpfs tmpfs /usr/local/
 /sbin/mount -t tmpfs tmpfs /usr/home/
 #Move staged files into read/write mountpoints
 /bin/mv /tmp/var/* /var/
 /bin/mv /tmp/etc/* /etc/
-/bin/mv /tmp/localetc/* /usr/local/etc/
+/bin/mv /tmp/local/* /usr/local/
 #Cleanup staging areas
 /bin/rmdir /tmp/var/
 /bin/rmdir /tmp/etc/
-/bin/rmdir /tmp/localetc/
+/bin/rmdir /tmp/local/
 #Create any empty subdirs as needed
 /bin/mkdir -p /var/tmp
 
