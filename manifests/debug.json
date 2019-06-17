@@ -19,7 +19,7 @@
          "default":[
             "sysutils/pc-installdialog",
             "sysutils/pc-sysinstall",
-            "shell/zsh"
+            "shells/zsh"
          ]
       },
       "auto-install-script":"",
