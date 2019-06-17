@@ -1,6 +1,6 @@
 # Set the brand/loader logo
-loader_brand="i3wm"
-loader_logo="i3wm"
+loader_brand="iwm"
+loader_logo="iwm"
 loader_menu_title="Welcome to i3wm"
 
 kern.vt.color.0.rgb="#151515"
