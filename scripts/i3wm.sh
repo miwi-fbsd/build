@@ -41,5 +41,5 @@ chroot ${ISODIR} ls -la sbin/
 
 #experiment user
 echo "Create User"
-chroot ${ISODIR} pw useradd -n i3wm -m -s /bin/tcsh -g wheel,video -d /usr/home/i3wm
+chroot ${ISODIR} pw useradd -n i3wm -m -s /bin/tcsh -G wheel  -d /usr/home/i3wm
 
