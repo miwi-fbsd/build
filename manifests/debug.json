@@ -33,7 +33,8 @@
       "iso-packages":{  
          "default":[  
             "sysutils/pc-installdialog",
-            "sysutils/pc-sysinstall"
+            "sysutils/pc-sysinstall",
+			"shells/zsh"
          ]
       },
       "iso-base-packages":{  
