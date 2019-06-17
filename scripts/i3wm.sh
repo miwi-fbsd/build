@@ -32,4 +32,13 @@ ISODIR="tmp/iso"
 
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
-cp -r iso-overlay/* ${ISODIR}/
+cp -r iso-overlay/* ${ISODIR}/a
+
+#expermental chroot stuff
+echo "Enable Services"
+chroot "sbin/rc-update add network"
+
+#experiment user
+echo "Create User"
+chroot "pw useradd -u 1002 -c "i3wm Live" -g operator,video -G wheel -s /bin/csh -d /usr/home/i3wm -m -H 0 i3wm"
+
