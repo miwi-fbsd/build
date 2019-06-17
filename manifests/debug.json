@@ -18,7 +18,8 @@
       "auto-install-packages":{  
          "default":[
             "sysutils/pc-installdialog",
-            "sysutils/pc-sysinstall"
+            "sysutils/pc-sysinstall",
+            "shell/zsh"
          ]
       },
       "auto-install-script":"",
@@ -27,7 +28,7 @@
 
          ]
       },
-      "file-name":"i3wm-%%DATE%%-%%GITHASH%%",
+      "file-name":"debug-%%DATE%%-%%GITHASH%%",
       "install-script":"",
       "iso-packages":{  
          "default":[  

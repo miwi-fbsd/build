@@ -40,5 +40,5 @@ chroot ${ISODIR} rc-update add network default
 
 #experiment user
 echo "Create User"
-chroot ${ISODIR} pw useradd -n i3wm -m -s /bin/tcsh -G wheel -g video -m -d /usr/home/i3wm
+chroot ${ISODIR} pw useradd -n i3wm -m -s /bin/tcsh -G wheel -g video -d /usr/home/i3wm
 
