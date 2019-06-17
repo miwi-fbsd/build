@@ -37,7 +37,6 @@ cp -r iso-overlay/* ${ISODIR}/
 #expermental chroot stuff
 echo "Enable Services"
 chroot ${ISODIR} rc-update add network default
-chroot ${ISODIR} ls -la sbin/
 
 #experiment user
 echo "Create User"
