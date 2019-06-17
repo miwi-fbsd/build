@@ -36,9 +36,10 @@ cp -r iso-overlay/* ${ISODIR}/
 
 #expermental chroot stuff
 echo "Enable Services"
-chroot ${ISDOIR} rc-update add network default
+chroot ${ISODIR} rc-update add network default
+chroot ${ISODIR} ls -la sbin/
 
 #experiment user
 echo "Create User"
-chroot ${ISODIR} pw useradd -u 1002 -c "i3wm Live" -G wheel,video -s /bin/csh -d /usr/home/i3wm -m -H 0 i3wm
+chroot ${ISODIR} pw useradd -n i3wm -m -s /bin/tcsh -g wheel,video -d /usr/home/i3wm
 
