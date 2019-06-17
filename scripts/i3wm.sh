@@ -32,7 +32,7 @@ ISODIR="tmp/iso"
 
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
-cp -r iso-overlay/* ${ISODIR}/a
+cp -r iso-overlay/* ${ISODIR}/
 
 #expermental chroot stuff
 echo "Enable Services"
