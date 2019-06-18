@@ -33,11 +33,11 @@ fi
 /bin/mkdir -p /tmp/home
 /bin/mkdir -p /tmp/boot
 #Copy any existing files to the staging area
-/bin/cp -r /var/* /tmp/var/
-/bin/cp -r /etc/* /tmp/etc/
-/bin/cp -r /usr/local/* /tmp/local/
-/bin/cp -r /usr/home/* /tmp/home/
-/bin/cp -r /boot/* /tmp/boot/
+/bin/cp -rp /var/* /tmp/var/
+/bin/cp -rp /etc/* /tmp/etc/
+/bin/cp -rp /usr/local/* /tmp/local/
+/bin/cp -rp /usr/home/* /tmp/home/
+/bin/cp -rp /boot/* /tmp/boot/
 #Create the read-write tmpfs mountpoints
 /sbin/mount -t tmpfs -o size=50G tmpfs /var/
 /sbin/mount -t tmpfs tmpfs /etc/
