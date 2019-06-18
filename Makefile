@@ -11,6 +11,6 @@ config:
 ports:
 	@sh scripts/build.sh poudriere
 iso:
-	@sh scripts/build.sh -x iso
+	@sh scripts/build.sh iso
 vm:
 	@sh scripts/build.sh vm
