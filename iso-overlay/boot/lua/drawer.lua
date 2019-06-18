@@ -360,7 +360,7 @@ logo_position = {x = 46, y = 4}
 -- X/Y coords where the menu (= area of frame_size) should be placed
 -- Here were take the width of the frame_size (42, a nice number btw...)
 -- menu_position = {x = center(1, 42, 80), y = 10}
-menu_position = {x = center(1, 42, 80), y = center(1, 13, 24)}
+menu_position = {x = center(1, 32, 80), y = center(1, 13, 24)}
 
 -- Lenght/Height of the frame/rectangle for the menu
 frame_size = {w = 42, h = 13}
