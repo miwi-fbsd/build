@@ -30,8 +30,6 @@
 local drawer = require("drawer")
 
 local penbsd_brand = {
-"  +-+-+-+-+-+-+-+-+",
-"  |0|1|0|1|0|0|0|0|",
 "  +-+-+-+-+-+-+-+-+"
 }
 
