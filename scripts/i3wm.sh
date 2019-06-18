@@ -36,7 +36,10 @@ cp -r iso-overlay/* ${ISODIR}/
 
 #expermental chroot stuff
 echo "Enable Services"
-chroot ${ISODIR} rc-update add network default
+for i in devfs network hostname hostid sysctl network syslog syscons
+do
+	chroot ${ISODIR} rc-update add $i boot
+done
 
 #experiment user
 echo "Create User"
