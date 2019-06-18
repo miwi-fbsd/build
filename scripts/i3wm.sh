@@ -36,7 +36,7 @@ cp -r iso-overlay/* ${ISODIR}/
 
 #expermental chroot stuff
 echo "Enable Services"
-for i in devfs network hostname hostid sysctl network syslog syscons
+for i in bootmisc devd devfs hostname hostid kldxref modules network sysctl syslogd syscons
 do
 	chroot ${ISODIR} rc-update add $i boot
 done

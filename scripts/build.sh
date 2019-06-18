@@ -220,6 +220,7 @@ setup_poudriere_conf()
 	echo "BASEFS=$POUDRIERE_BASEFS" >> ${_pdconf}
 	echo "ATOMIC_PACKAGE_REPOSITORY=no" >> ${_pdconf}
 	echo "DISTFILES_CACHE=${DISTFILES}" >> ${_pdconf}
+	echo "ALLOW_MAKE_JOBS=yes" >> ${_pdconf}
 	#echo "PKG_REPO_FROM_HOST=yes" >> ${_pdconf}
 	echo "ALLOW_MAKE_JOBS_PACKAGES=\"chromium* iridium* aws-sdk* gcc* webkit* llvm* clang* firefox* ruby* cmake* rust* qt5-web* phantomjs* swift* perl5* py*\"" >> ${_pdconf}
 	echo "PRIORITY_BOOST=\"pypy* openoffice* iridium* chromium* aws-sdk* libreoffice*\"" >> ${_pdconf}
