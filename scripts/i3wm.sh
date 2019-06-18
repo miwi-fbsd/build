@@ -40,7 +40,7 @@ chroot ${ISODIR} rc-update add network default
 
 #experiment user
 echo "Create User"
-chroot ${ISODIR} pw useradd -n i3wm -m -s /bin/tcsh -G wheel -g video -d /usr/home/i3wm
+chroot ${ISODIR} pw useradd -n penbsd -m -s /usr/local/bin/zsh -G wheel,video,operator -g penbsd -d /usr/home/penbsd
 
 #lua permission
 chroot ${ISODIR} chmod 444 boot/lua/brand-penbsd*
