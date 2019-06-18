@@ -45,6 +45,4 @@ done
 echo "Create User"
 chroot ${ISODIR} pw groupadd penbsd
 chroot ${ISODIR} pw useradd -n penbsd -m -s /usr/local/bin/zsh -G wheel,video,operator -g penbsd 
-mkdir /usr/home/penbsd
 chown -R penbsd:penbsd /usr/home/penbsd
-chmod 777 /var/tmp

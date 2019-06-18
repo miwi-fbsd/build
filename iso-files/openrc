@@ -49,6 +49,7 @@ fi
 /bin/rmdir /tmp/local/
 #Create any empty subdirs as needed
 /bin/mkdir -p /var/tmp
+chmod 777 /var/tmp
 
 if [ -e "/sbin/openrc" ] ; then
   # Start OpenRC Now

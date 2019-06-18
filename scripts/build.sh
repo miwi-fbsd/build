@@ -1099,7 +1099,7 @@ install-repo: {
 }
 EOF
 	mkdir -p ${ISODIR}/install-pkg
-	mkdir -p ${ISODIR}/usr/home
+	mkdir -p ${ISODIR}/usr/home/penbsd
 	mkdir -p ${ISODIR}/usr/local
 	mount_nullfs ${POUDRIERE_PKGDIR} ${ISODIR}/install-pkg
 	if [ $? -ne 0 ] ; then
