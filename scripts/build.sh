@@ -1173,9 +1173,9 @@ install-repo: {
   enabled: yes
 }
 EOF
-	#execute i3wm 
-	echo "Execute i3wm env"
-	. "$(dirname $0)/i3wm.sh"
+	#execute PenBSD 
+	echo "Execute PenBSD env"
+	. "$(dirname $0)/penbsd.sh"
 	
 
 	# Prune specified files

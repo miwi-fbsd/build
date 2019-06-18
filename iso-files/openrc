@@ -30,10 +30,12 @@ fi
 /bin/mkdir -p /tmp/var
 /bin/mkdir -p /tmp/etc
 /bin/mkdir -p /tmp/local
+/bin/mkdir -p /tmp/home
 #Copy any existing files to the staging area
 /bin/cp -r /var/* /tmp/var/
 /bin/cp -r /etc/* /tmp/etc/
 /bin/cp -r /usr/local/* /tmp/local/
+/bin/cp -r /usr/home/* /tmp/home/
 #Create the read-write tmpfs mountpoints
 /sbin/mount -t tmpfs tmpfs /var/
 /sbin/mount -t tmpfs tmpfs /etc/
@@ -43,10 +45,12 @@ fi
 /bin/mv /tmp/var/* /var/
 /bin/mv /tmp/etc/* /etc/
 /bin/mv /tmp/local/* /usr/local/
+/bin/mv /tmp/home/* /usr/home/
 #Cleanup staging areas
 /bin/rmdir /tmp/var/
 /bin/rmdir /tmp/etc/
 /bin/rmdir /tmp/local/
+/bin/rmdir /tmp/home/
 #Create any empty subdirs as needed
 /bin/mkdir -p /var/tmp
 chmod 777 /var/tmp
