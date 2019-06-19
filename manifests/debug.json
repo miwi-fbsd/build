@@ -19,7 +19,35 @@
          "default":[
             "sysutils/pc-installdialog",
             "sysutils/pc-sysinstall",
-            "shells/zsh"
+            "shells/zsh",
+	    "sysutils/tmux",
+	    "textproc/jq",
+	    "lang/python36",
+	    "editors/vim-console",
+		"www/firefox",
+		"misc/mc",
+		"lang/python",
+		"security/openvpn",
+		"graphics/drm-current-kmod",
+		"sysutils/htop",
+		"x11-fonts/powerline-fonts",
+		"sysutils/dunst",
+		"graphics/feh",
+		"archivers/unzip",
+		"print/indexinfo",
+		"deskutils/py-py3status",
+		"net-mgmt/networkmgr",
+		"sysutils/sysup",
+		"x11/miwidesktop",
+		"x11-fonts/font-awesome",
+		"x11/slim",
+		"x11/rofi",
+		"x11/xautolock",
+		"x11-wm/i3",
+		"x11/i3lock",
+		"x11/i3status",
+		"x11/xorg",
+
          ]
       },
       "auto-install-script":"",
@@ -34,7 +62,7 @@
          "default":[  
             "sysutils/pc-installdialog",
             "sysutils/pc-sysinstall",
-			"shells/zsh"
+	    "shells/zsh"
          ]
       },
       "iso-base-packages":{  
