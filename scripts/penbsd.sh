@@ -42,9 +42,11 @@ do
 done
 
 #experiment user
+echo "Rename /usr/local to /usr/local2"
+chroot ${ISODIR} mv /usr/local/ /usr/local2
 echo "Create User"
 chroot ${ISODIR} pw groupadd penbsd
-chroot ${ISODIR} pw useradd -n penbsd -m -s /usr/local/bin/zsh -G wheel,video,operator -g penbsd  -d /usr/home/penbsd
+chroot ${ISODIR} pw useradd -n penbsd -m -s /usr/local2/bin/zsh -G wheel,video,operator -g penbsd  -d /usr/home/penbsd
 chroot ${ISODIR} chown -R penbsd:penbsd /usr/home/penbsd
 
 #Fix for KLD warning is newer than the linker.hints file
