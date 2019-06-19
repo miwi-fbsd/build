@@ -46,8 +46,7 @@
 		"x11-wm/i3",
 		"x11/i3lock",
 		"x11/i3status",
-		"x11/xorg",
-
+	"x11/xorg"
          ]
       },
       "auto-install-script":"",
