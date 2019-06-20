@@ -17,9 +17,6 @@
    "iso":{  
       "auto-install-packages":{  
          "default":[  
-            "sysutils/pc-installdialog",
-            "sysutils/pc-sysinstall",
-            "shells/zsh"
          ]
       },
       "auto-install-script":"",
@@ -32,8 +29,6 @@
       "install-script":"",
       "iso-packages":{  
          "default":[  
-            "sysutils/pc-installdialog",
-            "sysutils/pc-sysinstall",
             "shells/zsh",
             "textproc/jq",
             "editors/vim-console",
@@ -42,9 +37,7 @@
          ]
       },
       "iso-base-packages":{  
-         "default":[  
-            "os/userland",
-            "os/kernel"
+         "default":[
          ]
       },
       "os-flavors":{  
