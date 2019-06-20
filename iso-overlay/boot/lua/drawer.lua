@@ -281,21 +281,24 @@ local function center(coord, len, maxsize)
 	return coord + (maxsize / 2) - (len / 2)
 end
 
+-- XXX
 -- fbsd_brand = {
--- "  ______               ____   _____ _____  ",
--- " |  ____|             |  _ \\ / ____|  __ \\ ",
--- " | |___ _ __ ___  ___ | |_) | (___ | |  | |",
--- " |  ___| '__/ _ \\/ _ \\|  _ < \\___ \\| |  | |",
--- " | |   | | |  __/  __/| |_) |____) | |__| |",
--- " | |   | | |    |    ||     |      |      |",
--- " |_|   |_|  \\___|\\___||____/|_____/|_____/ "
+-- "+---------+ +---------+ +---------+ +---------+ +---------+ +---------+",
+-- "|0101|0000| |0110|0101| |0110|1110| |0101|0000| |0101|0011| |0100|0100|",
+-- "+---------+ +---------+ +---------+ +---------+ +---------+ +---------+"
 -- }
 
 fbsd_brand = {
-"+---------+ +---------+ +---------+ +---------+ +---------+ +---------+",
-"|0101|0000| |0110|0101| |0110|1110| |0101|0000| |0101|0011| |0100|0100|",
-"+---------+ +---------+ +---------+ +---------+ +---------+ +---------+"
+"                                     .________     _______  __________   ",
+"                                     |    .   \\_ _/   .   \\_\\_____.   \\_ ",
+"                                     |    |    | |    |____| |    |    | ",
+" .________     _______     _______   |    | _ / __\\___.   \\_ |    |    | ",
+" |        \\. ./       \\. ._\\__    \\. |    |   \\_\\_    |    | |    |    | ",
+" |    |    | |    |    | |    |    | |    |    | |    |    | |    |    | ",
+" |   /_____| |   /_____| |    |    | |    Y    | |    Y    | |    Y    | ",
+" |____|      |_______\\   |____|____| |________/  |_________| |________/  "
 }
+
 none = {""}
 
 menu_name_handlers = {
@@ -357,7 +360,7 @@ logodefs = {
 -- XXX
 -- X/Y coords where the branding logo should be placed
 -- Here were use also the center function for the X axis
-brand_position = {x = center(1, 71, 80), y = 3}
+brand_position = {x = center(1, 73, 80), y = 2}
 
 -- X/Y coords where the FreeBSD logo should be placed
 -- We ignore this for the sake of brevity
@@ -365,7 +368,7 @@ logo_position = {x = 46, y = 4}
 
 -- X/Y coords where the menu (= area of frame_size) should be placed
 -- Here were take the width of the frame_size (42, a nice number btw...)
-menu_position = {x = center(1, 42, 80), y = center(5, 13, 24)}
+menu_position = {x = center(1, 42, 80), y = center(6, 13, 24)}
 
 -- Lenght/Height of the frame/rectangle for the menu
 frame_size = {w = 42, h = 10}
