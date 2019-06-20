@@ -35,8 +35,6 @@
 				"os_buildworld_UNSET+=META_MODE",
 				"os_buildkernel_UNSET+=META_MODE",
 				"os_userland_UNSET+=DEBUG TEST ZOL",
-				"PREFIX=/usr/local2",
-				"LOCALBASE=/usr/local2"
 			]
 		},
 		"type": "git",
