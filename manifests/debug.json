@@ -43,8 +43,8 @@
       },
       "iso-base-packages":{  
          "default":[  
-            "os-generic-userland@generic",
-            "os-generic-kernel@generic"
+            "os/userland@generic",
+            "os/kernel@generic"
          ]
       },
       "os-flavors":{  
