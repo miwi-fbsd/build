@@ -104,7 +104,10 @@
       "branch":"trueos-master",
       "build":{  
          "default":[  
-            "textproc/jq"
+            "textproc/jq",
+            "os/userland",
+            "os/kernel"
+
          ]
       },
       "build-all":false,
