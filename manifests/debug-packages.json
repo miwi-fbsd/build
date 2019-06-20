@@ -20,6 +20,8 @@
 		"branch": "trueos-master",
 		"build": {
 			"default": [
+            		"os/userland@generic",
+            		"os/kernel@generic"
 				"irc/weechat"
 			]
 		},
