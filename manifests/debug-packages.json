@@ -22,6 +22,7 @@
 			"default": [
             			"os/userland@generic",
             			"os/kernel@generic",
+				"print/indexinfo",
 				"irc/weechat"
 			]
 		},
