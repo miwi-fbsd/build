@@ -1,4 +1,19 @@
-{  
+{
+   "base-packages":{  
+      "world-flags":{  
+         "default":[  
+            "MALLOC_PRODUCTION=YES",
+            "WITHOUT_ASSERT_DEBUG=ON"
+         ]
+      },
+      "kernel-flags":{  
+         "default":[  
+            "KERNCONF=GENERIC-NODEBUG"
+         ]
+      },
+      "branch":"trueos/master",
+      "repo":"https://github.com/trueos/trueos"
+   },
    "pkg-repo-name":"TrueOS",
    "pkg-train-name":"debug",
    "ports":{  
@@ -10,7 +25,14 @@
       },
       "build-all":false,
       "make.conf":{  
-         "default":[  
+         "default":[
+	     "OPTIONS_UNSET+=DOCS DEBUG ZOL NLS EXAMPLES JAVA CUPS HAL DBUS ALSA PULSEAUDIO GCONF DTRACE PROFILE CONSOLEKIT HELP TCLMAN MANPAGES MAN3 WAYLAND TEST GITWEB IPV6 GTK2 PYTHON2 TESTS",
+            "OPTIONS_SET+= GTK3 PYTHON3",
+            "security_sudo_SET+=DISABLE_AUTH",
+            "os_buildworld_UNSET+=BLUETOOTH ZOL EE FINGER FLOPPY FREEBSD_UPDATE HTML IPFILTER IPFW MAIL MAILWRAPPER PORTSNAP PPP QUOTAS RADIUS_SUPPORT SENDMAIL SHAREDOCS SVNLITE TALK TELNET UNBOUND",
+            "os_buildworld_UNSET+=META_MODE",
+            "os_buildkernel_UNSET+=META_MODE",
+            "os_userland_UNSET+=DEBUG TEST ZOL"
             "PREFIX=/usr/local2",
 	    "LOCALBASE=/usr/local2"
          ]
