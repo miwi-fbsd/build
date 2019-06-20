@@ -11,8 +11,8 @@ pipeline {
   environment {
     GH_ORG = 'trueos'
     GH_REPO = 'trueos'
-    POUDRIERE_BASE = 'debug'
-    POUDRIERE_PORTS = 'debug'
+    POUDRIERE_BASE = 'debug1'
+    POUDRIERE_PORTS = 'debug1'
     TRUEOS_MANIFEST='${env.WORKSPACE}/i3wm/manifests/debug.json'
     TRUEOS_VERSION = '13.0'
   }
