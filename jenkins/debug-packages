@@ -24,12 +24,6 @@ pipeline {
       }
     }
     stage('Build') {
-      post {
-        always {
-          archiveArtifacts artifacts: 'release/port-logs/latest/**', fingerprint: true
-          archiveArtifacts artifacts: 'release/src-logs/**', fingerprint: true
-        }
-      }
     environment {
      TRUEOS_MANIFEST="${env.WORKSPACE}/manifests/debug-packages.json"
   }
