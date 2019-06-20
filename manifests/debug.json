@@ -17,6 +17,7 @@
    "iso":{  
       "auto-install-packages":{  
          "default":[  
+
          ]
       },
       "auto-install-script":"",
@@ -29,15 +30,38 @@
       "install-script":"",
       "iso-packages":{  
          "default":[  
+            "archivers/unzip",
+            "devel/git",
+            "deskutils/py-py3status",
+            "editors/vim-console",
+            "graphics/feh",
+            "lang/python",
+            "lang/python36",
+            "misc/mc",
+            "net-mgmt/networkmgr",
+            "print/indexinfo",
+            "sysutils/htop",
+            "sysutils/tmux",
+            "sysutils/dunst",
+            "sysutils/sysup",
+            "sysutils/neofetch",
+            "security/openvpn",
             "shells/zsh",
             "textproc/jq",
-            "editors/vim-console",
-            "misc/mc",
-            "sysutils/htop"
+            "www/firefox",
+            "x11-fonts/font-awesome",
+            "x11-fonts/powerline-fonts",
+            "x11/slim",
+            "x11/rofi",
+            "x11-wm/i3",
+            "x11/i3lock",
+            "x11/miwidesktop",
+            "x11/xorg"
          ]
       },
       "iso-base-packages":{  
-         "default":[
+         "default":[  
+
          ]
       },
       "os-flavors":{  
@@ -100,7 +124,6 @@
             "textproc/jq",
             "os/userland",
             "os/kernel"
-
          ]
       },
       "build-all":false,
