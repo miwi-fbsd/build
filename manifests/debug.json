@@ -37,7 +37,6 @@
             "graphics/feh",
             "misc/mc",
             "net-mgmt/networkmgr",
-            "print/indexinfo",
             "sysutils/htop",
             "sysutils/tmux",
             "sysutils/dunst",
