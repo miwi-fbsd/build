@@ -35,9 +35,7 @@
             "deskutils/py-py3status",
             "editors/vim-console",
             "graphics/feh",
-            "misc/mc",
             "net-mgmt/networkmgr",
-            "sysutils/htop",
             "sysutils/tmux",
             "sysutils/dunst",
             "security/openvpn",
@@ -49,7 +47,7 @@
             "x11/rofi",
             "x11-wm/i3",
             "x11/i3lock",
-            "x11/miwidesktop",
+            "x11/penbsd-desktop",
             "x11/xorg"
          ]
       },
