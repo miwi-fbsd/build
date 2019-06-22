@@ -41,12 +41,14 @@ do
 	chroot ${ISODIR} rc-update add $i boot
 done
 
-#experiment user
-chroot ${ISODIR} mkdir /usr/local2
+# start local inits
+for l in dbus slim
+do
+	chroot ${ISODIR} rc $l default
+done
+
 echo "Create User"
 chroot ${ISODIR} pw groupadd penbsd
 chroot ${ISODIR} pw useradd -n penbsd -m -s /usr/local/bin/zsh -G wheel,video,operator -g penbsd  -d /usr/home/penbsd
 chroot ${ISODIR} chown -R penbsd:penbsd /usr/home/penbsd
 
-#Fix for KLD warning is newer than the linker.hints file
-#chroot ${ISODIR} kldxref /boot/kernel
