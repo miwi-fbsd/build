@@ -44,7 +44,7 @@ done
 # start local inits
 for l in dbus slim
 do
-	chroot ${ISODIR} rc $l default
+	chroot ${ISODIR} rc-update add $l default
 done
 
 echo "Create User"
