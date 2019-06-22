@@ -8,7 +8,5 @@
     if [ $? -ne 0 ] ; then
       # New ethernet device
       sysrc "ifconfig_${nic}=DHCP"
-      sysrc "ifconfig_${nic}_ipv6=inet6 accept_rtadv"
     fi
   done
-}
