@@ -78,6 +78,8 @@ sleep 1
 # Start the installation
 #sh /etc/rc.install
 
+# find network
+sh /etc/find-network.sh
 
 # We don't actually care if rc default worked or not, we should exit 0
 # to allow logins
