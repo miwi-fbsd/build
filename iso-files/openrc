@@ -25,33 +25,42 @@ fi
 # This is for install media which is R/O. We need /etc and
 # /usr/local/etc to be R/W for services like networking
 # mouse and other to start on live/install media
-/sbin/mount -t tmpfs -o size=50G tmpfs /tmp
+/sbin/mount -t tmpfs tmpfs /tmp
 #Make temporary staging areas in /tmp
 /bin/mkdir -p /tmp/var
 /bin/mkdir -p /tmp/etc
 /bin/mkdir -p /tmp/home
 /bin/mkdir -p /tmp/boot
+/bin/mkdir -p /tmp/localetc
+/bin/mkdir -p /tmp/root
 #Copy any existing files to the staging area
 /bin/cp -rp /var/* /tmp/var/
 /bin/cp -rp /etc/* /tmp/etc/
 /bin/cp -rp /usr/home/* /tmp/home/
 /bin/cp -rp /boot/* /tmp/boot/
+/bin/cp -rp /usr/local/etc/* /tmp/localetc/
+/bin/cp -rp /root/* /tmp/root/
 #Create the read-write tmpfs mountpoints
-/sbin/mount -t tmpfs -o size=50G tmpfs /var/
+/sbin/mount -t tmpfs tmpfs /var/
 /sbin/mount -t tmpfs tmpfs /etc/
-/sbin/mount -t tmpfs -o size=50G tmpfs /usr/local2/
-/sbin/mount -t tmpfs -o size=50G tmpfs /usr/home/
-/sbin/mount -t tmpfs -o size=512M tmpfs /boot/
+/sbin/mount -t tmpfs tmpfs /usr/local/etc/
+/sbin/mount -t tmpfs tmpfs /usr/home/
+/sbin/mount -t tmpfs tmpfs /boot/
+/sbin/mount -t tmpfs tmpfs /root/
 #Move staged files into read/write mountpoints
 /bin/mv /tmp/var/* /var/
 /bin/mv /tmp/etc/* /etc/
 /bin/mv /tmp/home/* /usr/home/
 /bin/mv /tmp/boot/* /boot/
+/bin/mv /tmp/localetc/* /usr/local/etc/
+/bin/mv /tmp/root/* /root/
 #Cleanup staging areas
 /bin/rmdir /tmp/var/
 /bin/rmdir /tmp/etc/
 /bin/rmdir /tmp/home/
 /bin/rmdir /tmp/boot/
+/bin/rmdir /tmp/localetc
+/bin/rmdir /tmp/root
 #Create any empty subdirs as needed
 /bin/mkdir -p /var/tmp
 chmod 777 /var/tmp
@@ -68,6 +77,7 @@ sleep 1
 
 # Start the installation
 #sh /etc/rc.install
+
 
 # We don't actually care if rc default worked or not, we should exit 0
 # to allow logins

@@ -47,8 +47,8 @@ do
 	chroot ${ISODIR} rc-update add $l default
 done
 
+U="penbsd"
 echo "Create User"
-chroot ${ISODIR} pw groupadd penbsd
-chroot ${ISODIR} pw useradd -n penbsd -m -s /usr/local/bin/zsh -G wheel,video,operator -g penbsd  -d /usr/home/penbsd
-chroot ${ISODIR} chown -R penbsd:penbsd /usr/home/penbsd
+chroot ${ISODIR} pw useradd -n $U -m -s /usr/local/bin/zsh -G wheel,video,operator -d /usr/home/$U -w yes
+chroot ${ISODIR} chown -R $U:$U /usr/home/$U
 
