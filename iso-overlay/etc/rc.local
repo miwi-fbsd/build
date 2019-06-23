@@ -4,3 +4,5 @@
 sh /root/bin/xconf.sh
 sleep 4;
 /usr/local/etc/init.d/slim start
+
+exit 0
