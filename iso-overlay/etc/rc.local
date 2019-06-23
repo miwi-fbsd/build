@@ -2,13 +2,13 @@
 
 #Attempt to fix the network during boot
 sh /etc/find-network.sh
-sleep 5;
+sleep 2;
 /etc/init.d/network start
 
 
 #Set xorg.conf
 sh /root/bin/xconf.sh
-sleep 5;
+sleep 2;
 /usr/local/etc/init.d/slim start
 
 exit 0
