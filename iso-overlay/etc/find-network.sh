@@ -10,3 +10,6 @@
       sysrc "ifconfig_${nic}=DHCP"
     fi
   done
+
+
+sh /etc/init.d/network restart
