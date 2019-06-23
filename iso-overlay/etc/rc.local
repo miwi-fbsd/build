@@ -1,2 +1,6 @@
 #
-/usr/local/etc/init.d/slim restart
+
+#Set xorg.conf
+sh /root/bin/xconf.sh
+sleep 4;
+/usr/local/etc/init.d/slim start

@@ -42,7 +42,7 @@ do
 done
 
 # start local inits
-for l in dbus slim
+for l in dbus 
 do
 	chroot ${ISODIR} rc-update add $l default
 done
