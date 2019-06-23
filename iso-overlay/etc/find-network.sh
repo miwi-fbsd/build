@@ -12,4 +12,4 @@
   done
 
 
-sh /etc/init.d/network restart
+sh /etc/init.d/dhcpcd restart
