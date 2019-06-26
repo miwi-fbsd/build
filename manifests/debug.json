@@ -31,7 +31,7 @@
       "iso-packages":{  
          "default":[  
             "archivers/unzip",
-            "devel/git",
+            "devel/git-lite",
             "deskutils/py-py3status",
             "editors/vim-console",
             "graphics/feh",
@@ -48,7 +48,9 @@
             "x11-wm/i3",
             "x11/i3lock",
             "x11/penbsd-desktop",
-			"devel/libvterm",
+			"sysutils/neofetch",
+			"x11-fonts/libXfont2",
+			"devel/unibilium",
             "x11/xorg"
          ]
       },
