@@ -68,8 +68,7 @@
          "default":[  
             "METALOG",
             "/usr/local/share/examples",
-            "/usr/local/include",
-			"/usr/local/llvm60",
+			"/usr/local/llvm60/bin",
             "/usr/bin/cc*",
             "/usr/bin/clang*",
             "/usr/bin/cpp",
