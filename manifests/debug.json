@@ -48,6 +48,7 @@
             "x11-wm/i3",
             "x11/i3lock",
             "x11/penbsd-desktop",
+			"devel/libvterm",
             "x11/xorg"
          ]
       },
